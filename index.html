@@ -42,7 +42,7 @@ button{cursor:pointer}
 <div class="section-title">Szybki dostęp</div>
 <div class="platform"><div class="platform-left"><div class="platform-icon">☁️</div><div><div class="platform-name">MUGO</div><div class="platform-status">Panel wydawcy</div></div></div><button class="open-btn" onclick="openMugo()">OTWÓRZ</button></div>
 <div class="platform"><div class="platform-left"><div class="platform-icon">▶️</div><div><div class="platform-name">YouTube Studio</div><div class="platform-status">Zarządzanie kanałem</div></div></div><button class="open-btn" onclick="openYouTube()">OTWÓRZ</button></div>
-<div class="section-title">Twój katalog</div>
+  <div class="section-title">Twój katalog</div>
 <div class="stat-grid"><div class="stat"><div class="stat-label">Utwory</div><div class="stat-number" id="songCount">0</div></div><div class="stat"><div class="stat-label">Wydania</div><div class="stat-number" id="releaseCount">0</div></div></div>
 <div class="section-title">Ostatni utwór</div><div id="homeLatest"></div>
 </div></section>
@@ -98,8 +98,7 @@ button{cursor:pointer}
 <button class="btn" onclick="addSong()">Zapisz utwór</button>
 <button class="btn secondary close" onclick="closeSongModal()">Anuluj</button>
 </div></div>
-
-<div id="detailModal" class="modal"><div class="modal-box"><h2 id="detailTitle">Utwór</h2><div id="detailBody"></div><button class="btn danger" id="detailDelete">Usuń utwór</button><button class="btn secondary close" onclick="closeDetail()">Zamknij</button></div></div>
+  <div id="detailModal" class="modal"><div class="modal-box"><h2 id="detailTitle">Utwór</h2><div id="detailBody"></div><button class="btn danger" id="detailDelete">Usuń utwór</button><button class="btn secondary close" onclick="closeDetail()">Zamknij</button></div></div>
 <div id="toast" class="toast"></div>
 
 <script>
@@ -133,3 +132,4 @@ renderSongs();updateStats();
 </script>
 </body>
 </html>
+                                                                                                                                                                                                                   

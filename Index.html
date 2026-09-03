@@ -1,0 +1,808 @@
+<!DOCTYPE html><html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#09090d">
+<meta name="description" content="Caffi Studio — centrum twórczości muzycznej"><title>Caffi Studio</title><style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+:root {
+    --bg: #09090d;
+    --card: #15151c;
+    --card2: #1b1b24;
+    --text: #ffffff;
+    --muted: #9696a3;
+    --accent: #b86cff;
+    --accent2: #7b4dff;
+    --border: rgba(255,255,255,.07);
+    --green: #42e695;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+    padding-bottom: 90px;
+}
+
+button {
+    font-family: inherit;
+}
+
+.app {
+    max-width: 650px;
+    margin: auto;
+    min-height: 100vh;
+}
+
+/* HEADER */
+
+.header {
+    padding: 28px 20px 12px;
+}
+
+.logo {
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 4px;
+    margin-bottom: 6px;
+}
+
+.header h1 {
+    font-size: 30px;
+    line-height: 1.1;
+}
+
+.header p {
+    color: var(--muted);
+    margin-top: 7px;
+    font-size: 14px;
+}
+
+/* CONTENT */
+
+.content {
+    padding: 12px 20px 25px;
+}
+
+.page {
+    display: none;
+}
+
+.page.active {
+    display: block;
+}
+
+/* HERO */
+
+.hero {
+    background:
+        radial-gradient(circle at 80% 10%, rgba(184,108,255,.35), transparent 35%),
+        linear-gradient(135deg, #17131e, #111117);
+    border: 1px solid var(--border);
+    border-radius: 26px;
+    padding: 24px;
+    margin-bottom: 18px;
+    overflow: hidden;
+}
+
+.hero-small {
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+.hero h2 {
+    font-size: 24px;
+}
+
+.hero p {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.5;
+    margin-top: 8px;
+}
+
+/* CARDS */
+
+.section-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 22px 0 12px;
+}
+
+.card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 18px;
+    margin-bottom: 12px;
+}
+
+.card-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 15px;
+    background: rgba(184,108,255,.13);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 23px;
+    flex-shrink: 0;
+}
+
+.card h3 {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.card p {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+/* BUTTONS */
+
+.btn {
+    width: 100%;
+    border: none;
+    border-radius: 15px;
+    padding: 15px;
+    font-size: 15px;
+    font-weight: 700;
+    color: white;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.btn.secondary {
+    background: var(--card2);
+    border: 1px solid var(--border);
+}
+
+.btn:active {
+    transform: scale(.98);
+}
+
+/* PLATFORM */
+
+.platform {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 17px;
+    padding: 16px;
+    margin-bottom: 10px;
+}
+
+.platform-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.platform-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--card2);
+    font-size: 20px;
+}
+
+.platform-name {
+    font-weight: bold;
+}
+
+.platform-status {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 3px;
+}
+
+.open-btn {
+    background: rgba(184,108,255,.13);
+    border: 1px solid rgba(184,108,255,.25);
+    color: var(--accent);
+    border-radius: 10px;
+    padding: 9px 12px;
+    font-weight: bold;
+}
+
+/* MUSIC */
+
+.song {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    margin-bottom: 10px;
+}
+
+.cover {
+    width: 58px;
+    height: 58px;
+    border-radius: 13px;
+    background: linear-gradient(135deg, #b86cff, #39206c);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
+.song-info {
+    flex: 1;
+}
+
+.song-info h3 {
+    font-size: 15px;
+}
+
+.song-info p {
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+/* STATS */
+
+.stat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.stat {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 18px;
+}
+
+.stat-label {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.stat-number {
+    font-size: 25px;
+    font-weight: 800;
+    margin-top: 7px;
+}
+
+/* CREATE */
+
+.create-card {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.create-card::after {
+    content: "→";
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--accent);
+    font-size: 22px;
+}
+
+.ai {
+    background:
+        radial-gradient(circle at 90% 0%, rgba(184,108,255,.35), transparent 35%),
+        var(--card);
+}
+
+.badge {
+    display: inline-block;
+    background: rgba(184,108,255,.13);
+    color: var(--accent);
+    border-radius: 8px;
+    padding: 5px 8px;
+    font-size: 10px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+/* BOTTOM NAV */
+
+.bottom-nav {
+    position: fixed;
+    z-index: 100;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 78px;
+    background: rgba(15,15,20,.94);
+    backdrop-filter: blur(20px);
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: center;
+}
+
+.nav-inner {
+    width: 100%;
+    max-width: 650px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.nav-item {
+    border: none;
+    background: transparent;
+    color: var(--muted);
+    font-size: 11px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.nav-icon {
+    font-size: 22px;
+}
+
+.nav-item.active {
+    color: var(--accent);
+}
+
+/* MODAL */
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: rgba(0,0,0,.75);
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-box {
+    width: 100%;
+    max-width: 650px;
+    background: #14141a;
+    border-radius: 25px 25px 0 0;
+    padding: 24px;
+    border-top: 1px solid var(--border);
+}
+
+.modal-box h2 {
+    margin-bottom: 15px;
+}
+
+.input {
+    width: 100%;
+    background: #0d0d12;
+    border: 1px solid var(--border);
+    color: white;
+    border-radius: 13px;
+    padding: 14px;
+    margin-bottom: 10px;
+    outline: none;
+}
+
+.input:focus {
+    border-color: var(--accent);
+}
+
+.close {
+    background: var(--card2);
+}
+
+/* TOAST */
+
+.toast {
+    position: fixed;
+    z-index: 300;
+    left: 20px;
+    right: 20px;
+    bottom: 95px;
+    background: #22222b;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 14px;
+    text-align: center;
+    display: none;
+}
+
+.toast.show {
+    display: block;
+}
+</style></head><body><div class="app"><!-- HOME --><section id="home" class="page active"><div class="header">
+    <div class="logo">CAFFI</div>
+    <h1>Studio</h1>
+    <p>Twoje centrum twórczości muzycznej.</p>
+</div><div class="content"><div class="hero">
+    <div class="hero-small">CAFFI STUDIO 0.1</div>
+    <h2>Twórz. Wydawaj. Rozwijaj się.</h2>
+    <p>
+        Wszystko, czego potrzebujesz do zarządzania swoją muzyką
+        i contentem — w jednym miejscu.
+    </p>
+</div><div class="section-title">Szybki dostęp</div><div class="platform">
+    <div class="platform-left">
+        <div class="platform-icon">☁️</div>
+        <div>
+            <div class="platform-name">MUGO</div>
+            <div class="platform-status">Panel wydawcy</div>
+        </div>
+    </div><button class="open-btn" onclick="openMugo()">OTWÓRZ</button>
+
+</div><div class="platform">
+    <div class="platform-left">
+        <div class="platform-icon">▶️</div>
+        <div>
+            <div class="platform-name">YouTube Studio</div>
+            <div class="platform-status">Zarządzanie kanałem</div>
+        </div>
+    </div><button class="open-btn" onclick="openYouTube()">OTWÓRZ</button>
+
+</div><div class="section-title">Twój progres</div><div class="stat-grid"><div class="stat">
+    <div class="stat-label">Utwory</div>
+    <div class="stat-number" id="songCount">0</div>
+</div><div class="stat">
+    <div class="stat-label">Projekty</div>
+    <div class="stat-number">1</div>
+</div></div></div>
+</section><!-- MUSIC --><section id="music" class="page"><div class="header">
+    <div class="logo">CAFFI</div>
+    <h1>Music</h1>
+    <p>Twoje utwory, albumy i premiery.</p>
+</div><div class="content"><button class="btn" onclick="openSongModal()">
+    ＋ Dodaj utwór
+</button><div class="section-title">Twoja biblioteka</div><div id="songList"><div class="song"><div class="cover">♪</div><div class="song-info">
+    <h3>Brak utworów</h3>
+    <p>Dodaj swój pierwszy projekt.</p>
+</div></div></div></div>
+</section><!-- CREATE --><section id="create" class="page"><div class="header">
+    <div class="logo">CAFFI</div>
+    <h1>Create</h1>
+    <p>Twórz grafiki i przygotowuj content.</p>
+</div><div class="content"><div class="card create-card ai" onclick="showToast('Caffi AI będzie dostępne w kolejnej wersji 🤖')"><span class="badge">AI</span>
+
+<div class="card-row"><div class="icon">✨</div><div>
+<h3>Caffi AI</h3>
+<p>
+Generowanie pomysłów na okładki,
+miniatury i materiały promocyjne.
+</p>
+</div></div></div><div class="card create-card" onclick="showToast('Edytor okładek będzie dostępny w wersji 0.2 🎨')"><div class="card-row"><div class="icon">🖼️</div><div>
+<h3>Okładka albumu</h3>
+<p>Projekt 1:1 dla singla, EP lub albumu.</p>
+</div></div></div><div class="card create-card" onclick="showToast('Edytor miniaturek będzie dostępny w wersji 0.2 🎬')"><div class="card-row"><div class="icon">🎬</div><div>
+<h3>Miniatura YouTube</h3>
+<p>Projektowanie grafik 16:9.</p>
+</div></div></div><div class="card create-card" onclick="showToast('Własny edytor Caffi Designer — już w planach 🔥')"><div class="card-row"><div class="icon">🎨</div><div>
+<h3>Caffi Designer</h3>
+<p>Twórz własne projekty od zera.</p>
+</div></div></div></div>
+</section><!-- STATS --><section id="stats" class="page"><div class="header">
+    <div class="logo">CAFFI</div>
+    <h1>Stats</h1>
+    <p>Twoje platformy i wyniki.</p>
+</div><div class="content"><div class="stat-grid"><div class="stat">
+    <div class="stat-label">Spotify</div>
+    <div class="stat-number">—</div>
+</div><div class="stat">
+    <div class="stat-label">YouTube</div>
+    <div class="stat-number">—</div>
+</div></div><div class="section-title">Platformy</div><div class="card">
+<div class="card-row">
+<div class="icon">🎵</div>
+<div>
+<h3>Spotify</h3>
+<p>Integracja ze statystykami Spotify będzie dodana później.</p>
+</div>
+</div>
+</div><div class="card">
+<div class="card-row">
+<div class="icon">▶️</div>
+<div>
+<h3>YouTube</h3>
+<p>Połączenie z YouTube API będzie dodane w kolejnej wersji.</p>
+</div>
+</div>
+</div><div class="card">
+<div class="card-row">
+<div class="icon">☁️</div>
+<div>
+<h3>MUGO / CloudSound</h3>
+<p>Integracja będzie zależna od dostępnego API wydawcy.</p>
+</div>
+</div>
+</div></div>
+</section></div><!-- BOTTOM NAV --><nav class="bottom-nav"><div class="nav-inner"><button class="nav-item active" onclick="showPage('home',this)">
+<div class="nav-icon">⌂</div>
+Home
+</button><button class="nav-item" onclick="showPage('music',this)">
+<div class="nav-icon">♫</div>
+Music
+</button><button class="nav-item" onclick="showPage('create',this)">
+<div class="nav-icon">✦</div>
+Create
+</button><button class="nav-item" onclick="showPage('stats',this)">
+<div class="nav-icon">▥</div>
+Stats
+</button></div></nav><!-- ADD SONG MODAL --><div id="songModal" class="modal"><div class="modal-box"><h2>Nowy utwór</h2><input
+id="songName"
+class="input"
+placeholder="Nazwa utworu"
+
+«»
+
+<input
+id="songArtist"
+class="input"
+placeholder="Artysta / wykonawca"
+
+«»
+
+<input
+id="songDate"
+class="input"
+type="date"
+
+«»
+
+<button class="btn" onclick="addSong()">
+    Dodaj utwór
+</button><button class="btn secondary" onclick="closeSongModal()">
+    Anuluj
+</button></div></div><div id="toast" class="toast"></div><script>
+
+/* NAWIGACJA */
+
+function showPage(page, button) {
+
+    document.querySelectorAll(".page").forEach(function(p) {
+        p.classList.remove("active");
+    });
+
+    document.getElementById(page).classList.add("active");
+
+    document.querySelectorAll(".nav-item").forEach(function(n) {
+        n.classList.remove("active");
+    });
+
+    button.classList.add("active");
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+
+/* MUGO */
+
+function openMugo() {
+    window.open("https://mugo.pl/", "_blank");
+}
+
+
+/* YOUTUBE */
+
+function openYouTube() {
+    window.open("https://studio.youtube.com/", "_blank");
+}
+
+
+/* MODAL */
+
+function openSongModal() {
+    document.getElementById("songModal").classList.add("show");
+}
+
+function closeSongModal() {
+    document.getElementById("songModal").classList.remove("show");
+}
+
+
+/* DODAWANIE UTWORU */
+
+function addSong() {
+
+    const name =
+        document.getElementById("songName").value.trim();
+
+    const artist =
+        document.getElementById("songArtist").value.trim();
+
+    const date =
+        document.getElementById("songDate").value;
+
+    if (!name) {
+        showToast("Wpisz nazwę utworu.");
+        return;
+    }
+
+    let songs =
+        JSON.parse(localStorage.getItem("caffiSongs") || "[]");
+
+    songs.push({
+        name: name,
+        artist: artist || "Caffi",
+        date: date || "Brak daty"
+    });
+
+    localStorage.setItem(
+        "caffiSongs",
+        JSON.stringify(songs)
+    );
+
+    document.getElementById("songName").value = "";
+    document.getElementById("songArtist").value = "";
+    document.getElementById("songDate").value = "";
+
+    closeSongModal();
+
+    renderSongs();
+
+    showToast("Utwór został dodany 🎵");
+}
+
+
+/* WYŚWIETLANIE UTWORÓW */
+
+function renderSongs() {
+
+    const list =
+        document.getElementById("songList");
+
+    let songs =
+        JSON.parse(localStorage.getItem("caffiSongs") || "[]");
+
+    document.getElementById("songCount").innerText =
+        songs.length;
+
+    if (songs.length === 0) {
+
+        list.innerHTML = `
+        <div class="song">
+
+            <div class="cover">♪</div>
+
+            <div class="song-info">
+
+                <h3>Brak utworów</h3>
+
+                <p>
+                    Dodaj swój pierwszy projekt.
+                </p>
+
+            </div>
+
+        </div>
+        `;
+
+        return;
+    }
+
+    list.innerHTML = "";
+
+    songs.forEach(function(song, index) {
+
+        const item = document.createElement("div");
+
+        item.className = "song";
+
+        item.innerHTML = `
+
+            <div class="cover">♪</div>
+
+            <div class="song-info">
+
+                <h3>${escapeHtml(song.name)}</h3>
+
+                <p>
+                    ${escapeHtml(song.artist)}
+                    •
+                    ${escapeHtml(song.date)}
+                </p>
+
+            </div>
+
+            <button
+                class="open-btn"
+                onclick="deleteSong(${index})"
+            >
+                ×
+            </button>
+        `;
+
+        list.appendChild(item);
+
+    });
+}
+
+
+/* USUWANIE */
+
+function deleteSong(index) {
+
+    let songs =
+        JSON.parse(localStorage.getItem("caffiSongs") || "[]");
+
+    songs.splice(index, 1);
+
+    localStorage.setItem(
+        "caffiSongs",
+        JSON.stringify(songs)
+    );
+
+    renderSongs();
+
+    showToast("Utwór usunięty.");
+}
+
+
+/* BEZPIECZNE WYŚWIETLANIE TEKSTU */
+
+function escapeHtml(text) {
+
+    return text
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+}
+
+
+/* TOAST */
+
+function showToast(message) {
+
+    const toast =
+        document.getElementById("toast");
+
+    toast.innerText = message;
+
+    toast.classList.add("show");
+
+    setTimeout(function() {
+
+        toast.classList.remove("show");
+
+    }, 2500);
+}
+
+
+/* START */
+
+renderSongs();
+
+</script></body>
+</html>

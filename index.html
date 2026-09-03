@@ -1,808 +1,135 @@
-<!DOCTYPE html><html lang="pl">
+<!DOCTYPE html>
+<html lang="pl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#09090d">
-<meta name="description" content="Caffi Studio — centrum twórczości muzycznej"><title>Caffi Studio</title><style>
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    -webkit-tap-highlight-color: transparent;
-}
-
-:root {
-    --bg: #09090d;
-    --card: #15151c;
-    --card2: #1b1b24;
-    --text: #ffffff;
-    --muted: #9696a3;
-    --accent: #b86cff;
-    --accent2: #7b4dff;
-    --border: rgba(255,255,255,.07);
-    --green: #42e695;
-}
-
-body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: Arial, Helvetica, sans-serif;
-    min-height: 100vh;
-    padding-bottom: 90px;
-}
-
-button {
-    font-family: inherit;
-}
-
-.app {
-    max-width: 650px;
-    margin: auto;
-    min-height: 100vh;
-}
-
-/* HEADER */
-
-.header {
-    padding: 28px 20px 12px;
-}
-
-.logo {
-    color: var(--accent);
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: 4px;
-    margin-bottom: 6px;
-}
-
-.header h1 {
-    font-size: 30px;
-    line-height: 1.1;
-}
-
-.header p {
-    color: var(--muted);
-    margin-top: 7px;
-    font-size: 14px;
-}
-
-/* CONTENT */
-
-.content {
-    padding: 12px 20px 25px;
-}
-
-.page {
-    display: none;
-}
-
-.page.active {
-    display: block;
-}
-
-/* HERO */
-
-.hero {
-    background:
-        radial-gradient(circle at 80% 10%, rgba(184,108,255,.35), transparent 35%),
-        linear-gradient(135deg, #17131e, #111117);
-    border: 1px solid var(--border);
-    border-radius: 26px;
-    padding: 24px;
-    margin-bottom: 18px;
-    overflow: hidden;
-}
-
-.hero-small {
-    color: var(--accent);
-    font-size: 12px;
-    font-weight: bold;
-    letter-spacing: 1px;
-    margin-bottom: 8px;
-}
-
-.hero h2 {
-    font-size: 24px;
-}
-
-.hero p {
-    color: var(--muted);
-    font-size: 14px;
-    line-height: 1.5;
-    margin-top: 8px;
-}
-
-/* CARDS */
-
-.section-title {
-    font-size: 18px;
-    font-weight: 700;
-    margin: 22px 0 12px;
-}
-
-.card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 18px;
-    margin-bottom: 12px;
-}
-
-.card-row {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-}
-
-.icon {
-    width: 50px;
-    height: 50px;
-    border-radius: 15px;
-    background: rgba(184,108,255,.13);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 23px;
-    flex-shrink: 0;
-}
-
-.card h3 {
-    font-size: 16px;
-    margin-bottom: 5px;
-}
-
-.card p {
-    color: var(--muted);
-    font-size: 13px;
-    line-height: 1.4;
-}
-
-/* BUTTONS */
-
-.btn {
-    width: 100%;
-    border: none;
-    border-radius: 15px;
-    padding: 15px;
-    font-size: 15px;
-    font-weight: 700;
-    color: white;
-    background: linear-gradient(135deg, var(--accent), var(--accent2));
-    margin-top: 10px;
-    cursor: pointer;
-}
-
-.btn.secondary {
-    background: var(--card2);
-    border: 1px solid var(--border);
-}
-
-.btn:active {
-    transform: scale(.98);
-}
-
-/* PLATFORM */
-
-.platform {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 17px;
-    padding: 16px;
-    margin-bottom: 10px;
-}
-
-.platform-left {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.platform-icon {
-    width: 42px;
-    height: 42px;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--card2);
-    font-size: 20px;
-}
-
-.platform-name {
-    font-weight: bold;
-}
-
-.platform-status {
-    font-size: 12px;
-    color: var(--muted);
-    margin-top: 3px;
-}
-
-.open-btn {
-    background: rgba(184,108,255,.13);
-    border: 1px solid rgba(184,108,255,.25);
-    color: var(--accent);
-    border-radius: 10px;
-    padding: 9px 12px;
-    font-weight: bold;
-}
-
-/* MUSIC */
-
-.song {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 18px;
-    padding: 15px;
-    display: flex;
-    align-items: center;
-    gap: 13px;
-    margin-bottom: 10px;
-}
-
-.cover {
-    width: 58px;
-    height: 58px;
-    border-radius: 13px;
-    background: linear-gradient(135deg, #b86cff, #39206c);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-}
-
-.song-info {
-    flex: 1;
-}
-
-.song-info h3 {
-    font-size: 15px;
-}
-
-.song-info p {
-    color: var(--muted);
-    font-size: 12px;
-    margin-top: 4px;
-}
-
-/* STATS */
-
-.stat-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-}
-
-.stat {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 18px;
-    padding: 18px;
-}
-
-.stat-label {
-    color: var(--muted);
-    font-size: 12px;
-}
-
-.stat-number {
-    font-size: 25px;
-    font-weight: 800;
-    margin-top: 7px;
-}
-
-/* CREATE */
-
-.create-card {
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-}
-
-.create-card::after {
-    content: "→";
-    position: absolute;
-    right: 18px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--accent);
-    font-size: 22px;
-}
-
-.ai {
-    background:
-        radial-gradient(circle at 90% 0%, rgba(184,108,255,.35), transparent 35%),
-        var(--card);
-}
-
-.badge {
-    display: inline-block;
-    background: rgba(184,108,255,.13);
-    color: var(--accent);
-    border-radius: 8px;
-    padding: 5px 8px;
-    font-size: 10px;
-    font-weight: bold;
-    margin-bottom: 8px;
-}
-
-/* BOTTOM NAV */
-
-.bottom-nav {
-    position: fixed;
-    z-index: 100;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 78px;
-    background: rgba(15,15,20,.94);
-    backdrop-filter: blur(20px);
-    border-top: 1px solid var(--border);
-    display: flex;
-    justify-content: center;
-}
-
-.nav-inner {
-    width: 100%;
-    max-width: 650px;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-}
-
-.nav-item {
-    border: none;
-    background: transparent;
-    color: var(--muted);
-    font-size: 11px;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-}
-
-.nav-icon {
-    font-size: 22px;
-}
-
-.nav-item.active {
-    color: var(--accent);
-}
-
-/* MODAL */
-
-.modal {
-    display: none;
-    position: fixed;
-    inset: 0;
-    z-index: 200;
-    background: rgba(0,0,0,.75);
-    align-items: flex-end;
-    justify-content: center;
-}
-
-.modal.show {
-    display: flex;
-}
-
-.modal-box {
-    width: 100%;
-    max-width: 650px;
-    background: #14141a;
-    border-radius: 25px 25px 0 0;
-    padding: 24px;
-    border-top: 1px solid var(--border);
-}
-
-.modal-box h2 {
-    margin-bottom: 15px;
-}
-
-.input {
-    width: 100%;
-    background: #0d0d12;
-    border: 1px solid var(--border);
-    color: white;
-    border-radius: 13px;
-    padding: 14px;
-    margin-bottom: 10px;
-    outline: none;
-}
-
-.input:focus {
-    border-color: var(--accent);
-}
-
-.close {
-    background: var(--card2);
-}
-
-/* TOAST */
-
-.toast {
-    position: fixed;
-    z-index: 300;
-    left: 20px;
-    right: 20px;
-    bottom: 95px;
-    background: #22222b;
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 14px;
-    text-align: center;
-    display: none;
-}
-
-.toast.show {
-    display: block;
-}
-</style></head><body><div class="app"><!-- HOME --><section id="home" class="page active"><div class="header">
-    <div class="logo">CAFFI</div>
-    <h1>Studio</h1>
-    <p>Twoje centrum twórczości muzycznej.</p>
-</div><div class="content"><div class="hero">
-    <div class="hero-small">CAFFI STUDIO 0.1</div>
-    <h2>Twórz. Wydawaj. Rozwijaj się.</h2>
-    <p>
-        Wszystko, czego potrzebujesz do zarządzania swoją muzyką
-        i contentem — w jednym miejscu.
-    </p>
-</div><div class="section-title">Szybki dostęp</div><div class="platform">
-    <div class="platform-left">
-        <div class="platform-icon">☁️</div>
-        <div>
-            <div class="platform-name">MUGO</div>
-            <div class="platform-status">Panel wydawcy</div>
-        </div>
-    </div><button class="open-btn" onclick="openMugo()">OTWÓRZ</button>
-
-</div><div class="platform">
-    <div class="platform-left">
-        <div class="platform-icon">▶️</div>
-        <div>
-            <div class="platform-name">YouTube Studio</div>
-            <div class="platform-status">Zarządzanie kanałem</div>
-        </div>
-    </div><button class="open-btn" onclick="openYouTube()">OTWÓRZ</button>
-
-</div><div class="section-title">Twój progres</div><div class="stat-grid"><div class="stat">
-    <div class="stat-label">Utwory</div>
-    <div class="stat-number" id="songCount">0</div>
-</div><div class="stat">
-    <div class="stat-label">Projekty</div>
-    <div class="stat-number">1</div>
-</div></div></div>
-</section><!-- MUSIC --><section id="music" class="page"><div class="header">
-    <div class="logo">CAFFI</div>
-    <h1>Music</h1>
-    <p>Twoje utwory, albumy i premiery.</p>
-</div><div class="content"><button class="btn" onclick="openSongModal()">
-    ＋ Dodaj utwór
-</button><div class="section-title">Twoja biblioteka</div><div id="songList"><div class="song"><div class="cover">♪</div><div class="song-info">
-    <h3>Brak utworów</h3>
-    <p>Dodaj swój pierwszy projekt.</p>
-</div></div></div></div>
-</section><!-- CREATE --><section id="create" class="page"><div class="header">
-    <div class="logo">CAFFI</div>
-    <h1>Create</h1>
-    <p>Twórz grafiki i przygotowuj content.</p>
-</div><div class="content"><div class="card create-card ai" onclick="showToast('Caffi AI będzie dostępne w kolejnej wersji 🤖')"><span class="badge">AI</span>
-
-<div class="card-row"><div class="icon">✨</div><div>
-<h3>Caffi AI</h3>
-<p>
-Generowanie pomysłów na okładki,
-miniatury i materiały promocyjne.
-</p>
-</div></div></div><div class="card create-card" onclick="showToast('Edytor okładek będzie dostępny w wersji 0.2 🎨')"><div class="card-row"><div class="icon">🖼️</div><div>
-<h3>Okładka albumu</h3>
-<p>Projekt 1:1 dla singla, EP lub albumu.</p>
-</div></div></div><div class="card create-card" onclick="showToast('Edytor miniaturek będzie dostępny w wersji 0.2 🎬')"><div class="card-row"><div class="icon">🎬</div><div>
-<h3>Miniatura YouTube</h3>
-<p>Projektowanie grafik 16:9.</p>
-</div></div></div><div class="card create-card" onclick="showToast('Własny edytor Caffi Designer — już w planach 🔥')"><div class="card-row"><div class="icon">🎨</div><div>
-<h3>Caffi Designer</h3>
-<p>Twórz własne projekty od zera.</p>
-</div></div></div></div>
-</section><!-- STATS --><section id="stats" class="page"><div class="header">
-    <div class="logo">CAFFI</div>
-    <h1>Stats</h1>
-    <p>Twoje platformy i wyniki.</p>
-</div><div class="content"><div class="stat-grid"><div class="stat">
-    <div class="stat-label">Spotify</div>
-    <div class="stat-number">—</div>
-</div><div class="stat">
-    <div class="stat-label">YouTube</div>
-    <div class="stat-number">—</div>
-</div></div><div class="section-title">Platformy</div><div class="card">
-<div class="card-row">
-<div class="icon">🎵</div>
-<div>
-<h3>Spotify</h3>
-<p>Integracja ze statystykami Spotify będzie dodana później.</p>
+<meta name="description" content="Caffi Studio 0.2 — centrum twórczości muzycznej">
+<title>Caffi Studio 0.2</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+:root{--bg:#09090d;--card:#15151c;--card2:#1c1c25;--text:#fff;--muted:#9696a3;--accent:#b86cff;--accent2:#7548ff;--green:#42e695;--yellow:#ffd166;--red:#ff6680;--border:rgba(255,255,255,.07)}
+body{background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif;min-height:100vh;padding-bottom:88px}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+.app{max-width:700px;margin:auto}
+.header{padding:28px 20px 12px}.logo{color:var(--accent);font-size:12px;font-weight:800;letter-spacing:4px;margin-bottom:6px}.header h1{font-size:30px}.header p{color:var(--muted);margin-top:7px;font-size:14px}
+.content{padding:12px 20px 25px}.page{display:none}.page.active{display:block}
+.hero{background:radial-gradient(circle at 85% 5%,rgba(184,108,255,.35),transparent 34%),linear-gradient(135deg,#17131e,#111117);border:1px solid var(--border);border-radius:26px;padding:24px;margin-bottom:18px}.hero-small{color:var(--accent);font-size:12px;font-weight:bold;letter-spacing:1px;margin-bottom:8px}.hero h2{font-size:24px}.hero p{color:var(--muted);font-size:14px;line-height:1.5;margin-top:8px}
+.section-title{font-size:18px;font-weight:700;margin:22px 0 12px}.card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:18px;margin-bottom:12px}.card-row{display:flex;align-items:center;gap:14px}.icon{width:50px;height:50px;border-radius:15px;background:rgba(184,108,255,.13);display:flex;align-items:center;justify-content:center;font-size:23px;flex-shrink:0}
+.card h3{font-size:16px;margin-bottom:5px}.card p{color:var(--muted);font-size:13px;line-height:1.4}
+.btn{width:100%;border:0;border-radius:15px;padding:15px;font-size:15px;font-weight:700;color:#fff;background:linear-gradient(135deg,var(--accent),var(--accent2));margin-top:10px}.btn.secondary{background:var(--card2);border:1px solid var(--border)}.btn.danger{background:rgba(255,102,128,.12);color:var(--red);border:1px solid rgba(255,102,128,.2)}
+.platform{display:flex;align-items:center;justify-content:space-between;background:var(--card);border:1px solid var(--border);border-radius:17px;padding:16px;margin-bottom:10px}.platform-left{display:flex;align-items:center;gap:12px}.platform-icon{width:42px;height:42px;border-radius:12px;background:var(--card2);display:flex;align-items:center;justify-content:center;font-size:20px}.platform-name{font-weight:bold}.platform-status{font-size:12px;color:var(--muted);margin-top:3px}.open-btn{background:rgba(184,108,255,.13);border:1px solid rgba(184,108,255,.25);color:var(--accent);border-radius:10px;padding:9px 12px;font-weight:bold}
+.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.stat{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:18px}.stat-label{color:var(--muted);font-size:12px}.stat-number{font-size:25px;font-weight:800;margin-top:7px}
+.song{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:14px;display:flex;align-items:center;gap:13px;margin-bottom:10px}.cover{width:58px;height:58px;border-radius:13px;background:linear-gradient(135deg,#b86cff,#39206c);display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;overflow:hidden}.cover img{width:100%;height:100%;object-fit:cover}.song-info{flex:1;min-width:0}.song-info h3{font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.song-info p{color:var(--muted);font-size:12px;margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.status{display:inline-block;font-size:10px;padding:5px 7px;border-radius:8px;margin-top:7px;font-weight:bold}.s-demo{background:#292933;color:var(--muted)}.s-ready{background:rgba(66,230,149,.12);color:var(--green)}.s-planned{background:rgba(255,209,102,.12);color:var(--yellow)}.s-released{background:rgba(184,108,255,.13);color:var(--accent)}
+.search{width:100%;background:#0e0e13;border:1px solid var(--border);color:#fff;border-radius:14px;padding:13px;margin:12px 0;outline:none}.search:focus,.input:focus,select:focus,textarea:focus{border-color:var(--accent)}
+.empty{text-align:center;color:var(--muted);padding:30px 10px}.badge{display:inline-block;background:rgba(184,108,255,.13);color:var(--accent);border-radius:8px;padding:5px 8px;font-size:10px;font-weight:bold;margin-bottom:8px}
+.create-card{position:relative;overflow:hidden;cursor:pointer}.create-card::after{content:"→";position:absolute;right:18px;top:50%;transform:translateY(-50%);color:var(--accent);font-size:22px}.ai{background:radial-gradient(circle at 90% 0%,rgba(184,108,255,.35),transparent 35%),var(--card)}
+.bottom-nav{position:fixed;z-index:100;bottom:0;left:0;right:0;height:78px;background:rgba(15,15,20,.95);backdrop-filter:blur(20px);border-top:1px solid var(--border);display:flex;justify-content:center}.nav-inner{width:100%;max-width:700px;display:grid;grid-template-columns:repeat(4,1fr)}.nav-item{border:0;background:transparent;color:var(--muted);font-size:11px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px}.nav-icon{font-size:22px}.nav-item.active{color:var(--accent)}
+.modal{display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.78);align-items:flex-end;justify-content:center}.modal.show{display:flex}.modal-box{width:100%;max-width:700px;max-height:92vh;overflow:auto;background:#14141a;border-radius:25px 25px 0 0;padding:24px;border-top:1px solid var(--border)}.modal-box h2{margin-bottom:5px}.modal-sub{color:var(--muted);font-size:13px;margin-bottom:18px}.input,select,textarea{width:100%;background:#0d0d12;border:1px solid var(--border);color:#fff;border-radius:13px;padding:14px;margin-bottom:10px;outline:none}textarea{min-height:85px;resize:vertical}select{appearance:auto}.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.label{font-size:11px;color:var(--muted);margin:3px 0 6px}.file{width:100%;color:var(--muted);font-size:12px;margin-bottom:12px}.preview{width:100%;height:160px;border-radius:16px;background:#0d0d12;display:none;align-items:center;justify-content:center;overflow:hidden;margin-bottom:12px}.preview img{width:100%;height:100%;object-fit:cover}.close{background:var(--card2)!important}
+.toast{position:fixed;z-index:300;left:20px;right:20px;bottom:95px;background:#22222b;border:1px solid var(--border);border-radius:14px;padding:14px;text-align:center;display:none}.toast.show{display:block}
+.detail-cover{width:150px;height:150px;border-radius:20px;background:linear-gradient(135deg,#b86cff,#39206c);overflow:hidden;margin:0 auto 18px;display:flex;align-items:center;justify-content:center;font-size:50px}.detail-cover img{width:100%;height:100%;object-fit:cover}.detail-line{display:flex;justify-content:space-between;border-bottom:1px solid var(--border);padding:11px 0;font-size:13px}.detail-line span:first-child{color:var(--muted)}
+@media(max-width:430px){.row{grid-template-columns:1fr}.header h1{font-size:28px}}
+</style>
+</head>
+<body>
+<div class="app">
+
+<section id="home" class="page active">
+<div class="header"><div class="logo">CAFFI</div><h1>Studio</h1><p>Twoje centrum twórczości muzycznej.</p></div>
+<div class="content">
+<div class="hero"><div class="hero-small">CAFFI STUDIO 0.2</div><h2>Twórz. Wydawaj. Rozwijaj się.</h2><p>Muzyka, projekty, premiery i platformy — uporządkowane w jednym miejscu.</p></div>
+<div class="section-title">Szybki dostęp</div>
+<div class="platform"><div class="platform-left"><div class="platform-icon">☁️</div><div><div class="platform-name">MUGO</div><div class="platform-status">Panel wydawcy</div></div></div><button class="open-btn" onclick="openMugo()">OTWÓRZ</button></div>
+<div class="platform"><div class="platform-left"><div class="platform-icon">▶️</div><div><div class="platform-name">YouTube Studio</div><div class="platform-status">Zarządzanie kanałem</div></div></div><button class="open-btn" onclick="openYouTube()">OTWÓRZ</button></div>
+<div class="section-title">Twój katalog</div>
+<div class="stat-grid"><div class="stat"><div class="stat-label">Utwory</div><div class="stat-number" id="songCount">0</div></div><div class="stat"><div class="stat-label">Wydania</div><div class="stat-number" id="releaseCount">0</div></div></div>
+<div class="section-title">Ostatni utwór</div><div id="homeLatest"></div>
+</div></section>
+
+<section id="music" class="page">
+<div class="header"><div class="logo">CAFFI</div><h1>Music</h1><p>Utwory, albumy, premiery i metadata.</p></div>
+<div class="content">
+<button class="btn" onclick="openSongModal()">＋ Dodaj utwór</button>
+<input id="search" class="search" placeholder="🔎  Szukaj utworu..." oninput="renderSongs()">
+<div class="section-title">Biblioteka</div>
+<div id="songList"></div>
+</div></section>
+
+<section id="create" class="page">
+<div class="header"><div class="logo">CAFFI</div><h1>Create</h1><p>Grafiki, okładki i przygotowanie contentu.</p></div>
+<div class="content">
+<div class="card create-card ai" onclick="showToast('Caffi AI: moduł przygotowany do integracji 🤖')"><span class="badge">AI</span><div class="card-row"><div class="icon">✨</div><div><h3>Caffi AI</h3><p>Generowanie pomysłów na okładki, miniatury i materiały promocyjne.</p></div></div></div>
+<div class="card create-card" onclick="showToast('Caffi Designer będzie rozwijany w kolejnej wersji 🎨')"><div class="card-row"><div class="icon">🖼️</div><div><h3>Okładka albumu</h3><p>Projekt 1:1 dla singla, EP lub albumu.</p></div></div></div>
+<div class="card create-card" onclick="showToast('Miniatury YouTube — moduł graficzny w przygotowaniu 🎬')"><div class="card-row"><div class="icon">🎬</div><div><h3>Miniatura YouTube</h3><p>Projektowanie grafik 16:9.</p></div></div></div>
+<div class="card create-card" onclick="showToast('Caffi Designer — własny edytor od zera 🔥')"><div class="card-row"><div class="icon">🎨</div><div><h3>Caffi Designer</h3><p>Własny projekt, tekst, zdjęcia i elementy graficzne.</p></div></div></div>
+</div></section>
+
+<section id="stats" class="page">
+<div class="header"><div class="logo">CAFFI</div><h1>Stats</h1><p>Miejsce na wyniki z platform.</p></div>
+<div class="content">
+<div class="stat-grid"><div class="stat"><div class="stat-label">Utwory</div><div class="stat-number" id="statsSongs">0</div></div><div class="stat"><div class="stat-label">Wydane</div><div class="stat-number" id="statsReleased">0</div></div></div>
+<div class="section-title">Platformy</div>
+<div class="card"><div class="card-row"><div class="icon">🎵</div><div><h3>Spotify</h3><p>Przygotowane miejsce pod przyszłą integrację API.</p></div></div></div>
+<div class="card"><div class="card-row"><div class="icon">▶️</div><div><h3>YouTube</h3><p>Przygotowane miejsce pod YouTube API.</p></div></div></div>
+<div class="card"><div class="card-row"><div class="icon">☁️</div><div><h3>MUGO / CloudSound</h3><p>Panel wydawcy. Bezpośrednia integracja będzie zależna od dostępnego API.</p></div></div></div>
+</div></section>
 </div>
-</div>
-</div><div class="card">
-<div class="card-row">
-<div class="icon">▶️</div>
-<div>
-<h3>YouTube</h3>
-<p>Połączenie z YouTube API będzie dodane w kolejnej wersji.</p>
-</div>
-</div>
-</div><div class="card">
-<div class="card-row">
-<div class="icon">☁️</div>
-<div>
-<h3>MUGO / CloudSound</h3>
-<p>Integracja będzie zależna od dostępnego API wydawcy.</p>
-</div>
-</div>
+
+<nav class="bottom-nav"><div class="nav-inner">
+<button class="nav-item active" onclick="showPage('home',this)"><div class="nav-icon">⌂</div>Home</button>
+<button class="nav-item" onclick="showPage('music',this)"><div class="nav-icon">♫</div>Music</button>
+<button class="nav-item" onclick="showPage('create',this)"><div class="nav-icon">✦</div>Create</button>
+<button class="nav-item" onclick="showPage('stats',this)"><div class="nav-icon">▥</div>Stats</button>
+</div></nav>
+
+<div id="songModal" class="modal"><div class="modal-box">
+<h2>Nowy utwór</h2><div class="modal-sub">Zapisujemy dane lokalnie na Twoim urządzeniu.</div>
+<input id="songName" class="input" placeholder="Nazwa utworu *">
+<input id="songArtist" class="input" placeholder="Artysta / wykonawca">
+<div class="row"><div><div class="label">Typ wydania</div><select id="releaseType"><option>Single</option><option>Album</option><option>EP</option><option>Mixtape</option></select></div><div><div class="label">Status</div><select id="status"><option value="Demo">Demo</option><option value="Gotowy">Gotowy</option><option value="Zaplanowany">Zaplanowany</option><option value="Wydany">Wydany</option></select></div></div>
+<div class="row"><input id="releaseDate" class="input" type="date"><input id="genre" class="input" placeholder="Gatunek"></div>
+<div class="row"><input id="bpm" class="input" type="number" min="1" placeholder="BPM"><input id="producer" class="input" placeholder="Producent"></div>
+<div class="row"><input id="author" class="input" placeholder="Autor / songwriter"><input id="isrc" class="input" placeholder="ISRC"></div>
+<input id="upc" class="input" placeholder="UPC / EAN">
+<textarea id="notes" class="input" placeholder="Notatki"></textarea>
+<div class="label">Okładka</div><input id="coverFile" class="file" type="file" accept="image/*" onchange="previewCover(event)">
+<div id="coverPreview" class="preview"></div>
+<button class="btn" onclick="addSong()">Zapisz utwór</button>
+<button class="btn secondary close" onclick="closeSongModal()">Anuluj</button>
 </div></div>
-</section></div><!-- BOTTOM NAV --><nav class="bottom-nav"><div class="nav-inner"><button class="nav-item active" onclick="showPage('home',this)">
-<div class="nav-icon">⌂</div>
-Home
-</button><button class="nav-item" onclick="showPage('music',this)">
-<div class="nav-icon">♫</div>
-Music
-</button><button class="nav-item" onclick="showPage('create',this)">
-<div class="nav-icon">✦</div>
-Create
-</button><button class="nav-item" onclick="showPage('stats',this)">
-<div class="nav-icon">▥</div>
-Stats
-</button></div></nav><!-- ADD SONG MODAL --><div id="songModal" class="modal"><div class="modal-box"><h2>Nowy utwór</h2><input
-id="songName"
-class="input"
-placeholder="Nazwa utworu"
 
-«»
-
-<input
-id="songArtist"
-class="input"
-placeholder="Artysta / wykonawca"
-
-«»
-
-<input
-id="songDate"
-class="input"
-type="date"
-
-«»
-
-<button class="btn" onclick="addSong()">
-    Dodaj utwór
-</button><button class="btn secondary" onclick="closeSongModal()">
-    Anuluj
-</button></div></div><div id="toast" class="toast"></div><script>
-
-/* NAWIGACJA */
-
-function showPage(page, button) {
-
-    document.querySelectorAll(".page").forEach(function(p) {
-        p.classList.remove("active");
-    });
-
-    document.getElementById(page).classList.add("active");
-
-    document.querySelectorAll(".nav-item").forEach(function(n) {
-        n.classList.remove("active");
-    });
-
-    button.classList.add("active");
-
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-}
-
-
-/* MUGO */
-
-function openMugo() {
-    window.open("https://mugo.pl/", "_blank");
-}
-
-
-/* YOUTUBE */
-
-function openYouTube() {
-    window.open("https://studio.youtube.com/", "_blank");
-}
-
-
-/* MODAL */
-
-function openSongModal() {
-    document.getElementById("songModal").classList.add("show");
-}
-
-function closeSongModal() {
-    document.getElementById("songModal").classList.remove("show");
-}
-
-
-/* DODAWANIE UTWORU */
-
-function addSong() {
-
-    const name =
-        document.getElementById("songName").value.trim();
-
-    const artist =
-        document.getElementById("songArtist").value.trim();
-
-    const date =
-        document.getElementById("songDate").value;
-
-    if (!name) {
-        showToast("Wpisz nazwę utworu.");
-        return;
-    }
-
-    let songs =
-        JSON.parse(localStorage.getItem("caffiSongs") || "[]");
-
-    songs.push({
-        name: name,
-        artist: artist || "Caffi",
-        date: date || "Brak daty"
-    });
-
-    localStorage.setItem(
-        "caffiSongs",
-        JSON.stringify(songs)
-    );
-
-    document.getElementById("songName").value = "";
-    document.getElementById("songArtist").value = "";
-    document.getElementById("songDate").value = "";
-
-    closeSongModal();
-
-    renderSongs();
-
-    showToast("Utwór został dodany 🎵");
-}
-
-
-/* WYŚWIETLANIE UTWORÓW */
-
-function renderSongs() {
-
-    const list =
-        document.getElementById("songList");
-
-    let songs =
-        JSON.parse(localStorage.getItem("caffiSongs") || "[]");
-
-    document.getElementById("songCount").innerText =
-        songs.length;
-
-    if (songs.length === 0) {
-
-        list.innerHTML = `
-        <div class="song">
-
-            <div class="cover">♪</div>
-
-            <div class="song-info">
-
-                <h3>Brak utworów</h3>
-
-                <p>
-                    Dodaj swój pierwszy projekt.
-                </p>
-
-            </div>
-
-        </div>
-        `;
-
-        return;
-    }
-
-    list.innerHTML = "";
-
-    songs.forEach(function(song, index) {
-
-        const item = document.createElement("div");
-
-        item.className = "song";
-
-        item.innerHTML = `
-
-            <div class="cover">♪</div>
-
-            <div class="song-info">
-
-                <h3>${escapeHtml(song.name)}</h3>
-
-                <p>
-                    ${escapeHtml(song.artist)}
-                    •
-                    ${escapeHtml(song.date)}
-                </p>
-
-            </div>
-
-            <button
-                class="open-btn"
-                onclick="deleteSong(${index})"
-            >
-                ×
-            </button>
-        `;
-
-        list.appendChild(item);
-
-    });
-}
-
-
-/* USUWANIE */
-
-function deleteSong(index) {
-
-    let songs =
-        JSON.parse(localStorage.getItem("caffiSongs") || "[]");
-
-    songs.splice(index, 1);
-
-    localStorage.setItem(
-        "caffiSongs",
-        JSON.stringify(songs)
-    );
-
-    renderSongs();
-
-    showToast("Utwór usunięty.");
-}
-
-
-/* BEZPIECZNE WYŚWIETLANIE TEKSTU */
-
-function escapeHtml(text) {
-
-    return text
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
-}
-
-
-/* TOAST */
-
-function showToast(message) {
-
-    const toast =
-        document.getElementById("toast");
-
-    toast.innerText = message;
-
-    toast.classList.add("show");
-
-    setTimeout(function() {
-
-        toast.classList.remove("show");
-
-    }, 2500);
-}
-
-
-/* START */
-
-renderSongs();
-
-</script></body>
+<div id="detailModal" class="modal"><div class="modal-box"><h2 id="detailTitle">Utwór</h2><div id="detailBody"></div><button class="btn danger" id="detailDelete">Usuń utwór</button><button class="btn secondary close" onclick="closeDetail()">Zamknij</button></div></div>
+<div id="toast" class="toast"></div>
+
+<script>
+const KEY="caffiStudioSongsV02";
+let currentDetail=-1;
+function getSongs(){try{return JSON.parse(localStorage.getItem(KEY)||"[]")}catch(e){return[]}}
+function saveSongs(s){localStorage.setItem(KEY,JSON.stringify(s))}
+function showPage(page,button){document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));document.getElementById(page).classList.add("active");document.querySelectorAll(".nav-item").forEach(n=>n.classList.remove("active"));button.classList.add("active");window.scrollTo({top:0,behavior:"smooth"});updateStats()}
+function openMugo(){window.open("https://mugo.pl/","_blank")}
+function openYouTube(){window.open("https://studio.youtube.com/","_blank")}
+function openSongModal(){document.getElementById("songModal").classList.add("show")}
+function closeSongModal(){document.getElementById("songModal").classList.remove("show");document.getElementById("coverPreview").style.display="none";document.getElementById("coverPreview").innerHTML=""}
+function previewCover(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{const p=document.getElementById("coverPreview");p.innerHTML='<img src="'+r.result+'">';p.style.display="flex";p.dataset.src=r.result};r.readAsDataURL(f)}
+function addSong(){
+const name=document.getElementById("songName").value.trim();if(!name){showToast("Wpisz nazwę utworu.");return}
+const p=document.getElementById("coverPreview");const songs=getSongs();
+songs.push({id:Date.now(),name,artist:document.getElementById("songArtist").value.trim()||"Caffi",type:document.getElementById("releaseType").value,status:document.getElementById("status").value,date:document.getElementById("releaseDate").value,genre:document.getElementById("genre").value.trim(),bpm:document.getElementById("bpm").value,producer:document.getElementById("producer").value.trim(),author:document.getElementById("author").value.trim(),isrc:document.getElementById("isrc").value.trim(),upc:document.getElementById("upc").value.trim(),notes:document.getElementById("notes").value.trim(),cover:p.dataset.src||""});
+saveSongs(songs);document.querySelectorAll("#songModal .input").forEach(x=>{if(x.type!=="file")x.value=""});document.getElementById("coverFile").value="";closeSongModal();renderSongs();updateStats();showToast("Utwór zapisany 🎵")}
+function statusClass(s){return s==="Wydany"?"s-released":s==="Gotowy"?"s-ready":s==="Zaplanowany"?"s-planned":"s-demo"}
+function songHTML(s,i){return '<div class="song" onclick="openDetail('+i+')"><div class="cover">'+(s.cover?'<img src="'+s.cover+'">':'♪')+'</div><div class="song-info"><h3>'+esc(s.name)+'</h3><p>'+esc(s.artist)+' • '+esc(s.type)+(s.date?' • '+esc(s.date):"")+'</p><span class="status '+statusClass(s.status)+'">'+esc(s.status)+'</span></div><span style="color:var(--muted)">›</span></div>'}
+function renderSongs(){const list=document.getElementById("songList"),q=(document.getElementById("search")?.value||"").toLowerCase();let songs=getSongs();let filtered=songs.filter(s=>(s.name+" "+s.artist+" "+s.genre).toLowerCase().includes(q));list.innerHTML=filtered.length?filtered.map(s=>songHTML(s,songs.indexOf(s))).join(""):'<div class="empty">Nie masz jeszcze utworów.<br>Dodaj pierwszy projekt 🎵</div>';renderLatest()}
+function renderLatest(){const el=document.getElementById("homeLatest"),s=getSongs();if(!s.length){el.innerHTML='<div class="card empty">Brak utworów. Dodaj pierwszy w zakładce Music.</div>';return}el.innerHTML=songHTML(s[s.length-1],s.length-1)}
+function updateStats(){const s=getSongs();const released=s.filter(x=>x.status==="Wydany").length;document.getElementById("songCount").textContent=s.length;document.getElementById("releaseCount").textContent=released;document.getElementById("statsSongs").textContent=s.length;document.getElementById("statsReleased").textContent=released}
+function openDetail(i){const s=getSongs()[i];if(!s)return;currentDetail=i;document.getElementById("detailTitle").textContent=s.name;document.getElementById("detailBody").innerHTML='<div class="detail-cover">'+(s.cover?'<img src="'+s.cover+'">':'♪')+'</div>'+line("Artysta",s.artist)+line("Typ",s.type)+line("Status",s.status)+line("Data premiery",s.date||"—")+line("Gatunek",s.genre||"—")+line("BPM",s.bpm||"—")+line("Producent",s.producer||"—")+line("Autor",s.author||"—")+line("ISRC",s.isrc||"—")+line("UPC/EAN",s.upc||"—")+(s.notes?'<div class="card" style="margin-top:12px"><p style="white-space:pre-wrap">'+esc(s.notes)+'</p></div>':"");document.getElementById("detailDelete").onclick=()=>deleteSong(i);document.getElementById("detailModal").classList.add("show")}
+function line(a,b){return '<div class="detail-line"><span>'+esc(a)+'</span><b>'+esc(b)+'</b></div>'}
+function closeDetail(){document.getElementById("detailModal").classList.remove("show")}
+function deleteSong(i){if(!confirm("Usunąć ten utwór?"))return;let s=getSongs();s.splice(i,1);saveSongs(s);closeDetail();renderSongs();updateStats();showToast("Utwór usunięty.")}
+function esc(t){return String(t??"").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#039;")}
+function showToast(m){const t=document.getElementById("toast");t.textContent=m;t.classList.add("show");clearTimeout(window.tt);window.tt=setTimeout(()=>t.classList.remove("show"),2500)}
+renderSongs();updateStats();
+</script>
+</body>
 </html>

@@ -2,158 +2,106 @@
 <html lang="pl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Caffi Studio 0.3.0</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+<title>Caffi Studio 0.4.0</title>
 <style>
-:root{--bg:#09090d;--panel:#121219;--panel2:#191923;--text:#fff;--muted:#9696a6;--accent:#9b7cff;--accent2:#c4b5fd;--border:rgba(255,255,255,.08);--danger:#ff5f6d}
-*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 20% 0%,#1a1530 0,#09090d 38%);color:var(--text);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100vh}button,input,select{font:inherit}button{cursor:pointer;border:0}
-.app{display:flex;min-height:100vh}.sidebar{width:245px;padding:24px 16px;border-right:1px solid var(--border);background:rgba(10,10,15,.8);backdrop-filter:blur(20px);position:fixed;inset:0 auto 0 0;z-index:10}.logo{font-size:22px;font-weight:800;margin:4px 10px 30px;letter-spacing:.5px}.logo span{color:var(--accent)}.nav{display:grid;gap:8px}.nav button{background:transparent;color:var(--muted);padding:13px 14px;border-radius:13px;text-align:left;transition:.2s}.nav button:hover,.nav button.active{background:var(--panel2);color:#fff}.main{margin-left:245px;width:calc(100% - 245px);padding:28px 34px 130px}.top{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:28px}.search{width:min(420px,100%);background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:12px 15px;color:#fff;outline:0}.search:focus{border-color:rgba(155,124,255,.55)}.pill{background:var(--panel);border:1px solid var(--border);color:#fff;padding:10px 13px;border-radius:12px}.page{display:none;animation:fade .25s ease}.page.active{display:block}@keyframes fade{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}h1{font-size:34px;margin:0 0 8px}h2{font-size:21px;margin:0 0 14px}.muted{color:var(--muted)}.hero{background:linear-gradient(135deg,rgba(155,124,255,.24),rgba(255,255,255,.04));border:1px solid var(--border);border-radius:24px;padding:28px;margin-bottom:22px}.hero h1{font-size:32px}.btn{background:var(--accent);color:#fff;padding:12px 17px;border-radius:12px;font-weight:700}.btn.secondary{background:var(--panel2);border:1px solid var(--border)}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:18px 0}.stat,.card{background:rgba(18,18,25,.85);border:1px solid var(--border);border-radius:18px;padding:18px}.stat b{font-size:28px;display:block;margin-top:5px}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}.track{display:flex;align-items:center;gap:13px}.cover{width:58px;height:58px;border-radius:13px;background:linear-gradient(135deg,var(--accent),#29213d);display:grid;place-items:center;font-size:24px;flex:none}.track-info{min-width:0;flex:1}.track-title{font-weight:750;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.track-artist{color:var(--muted);font-size:13px;margin-top:3px}.actions{display:flex;gap:7px}.icon{background:var(--panel2);color:#fff;border:1px solid var(--border);width:38px;height:38px;border-radius:11px}.icon:hover{border-color:rgba(155,124,255,.5)}.empty{text-align:center;padding:45px 20px;color:var(--muted);border:1px dashed var(--border);border-radius:18px}.modal{position:fixed;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(8px);display:none;place-items:center;padding:18px;z-index:30}.modal.show{display:grid}.modal-box{width:min(520px,100%);background:#111119;border:1px solid var(--border);border-radius:22px;padding:22px}.form{display:grid;gap:12px}.form label{font-size:13px;color:var(--muted)}.form input,.form textarea{width:100%;background:#09090e;border:1px solid var(--border);color:#fff;border-radius:12px;padding:12px;outline:0}.form textarea{min-height:100px;resize:vertical}.row{display:flex;gap:10px;justify-content:flex-end;margin-top:8px}.player{position:fixed;left:245px;right:0;bottom:0;background:rgba(15,15,22,.94);border-top:1px solid var(--border);backdrop-filter:blur(20px);z-index:20;padding:12px 20px}.player-inner{display:flex;align-items:center;gap:15px}.player-info{flex:1;min-width:0}.progress{height:4px;background:#2a2933;border-radius:4px;margin:9px 0;overflow:hidden}.progress i{display:block;height:100%;width:0;background:var(--accent)}.time{font-size:11px;color:var(--muted);display:flex;justify-content:space-between}.ai{display:grid;grid-template-rows:1fr auto;height:calc(100vh - 170px);min-height:500px}.chat{overflow:auto;background:rgba(18,18,25,.7);border:1px solid var(--border);border-radius:20px;padding:18px}.msg{max-width:78%;padding:12px 14px;border-radius:15px;margin:9px 0;line-height:1.45}.msg.ai{background:var(--panel2);margin-right:auto}.msg.user{background:var(--accent);margin-left:auto}.chat-form{display:flex;gap:10px;margin-top:12px}.chat-form input{flex:1;background:var(--panel);border:1px solid var(--border);color:#fff;padding:13px;border-radius:13px;outline:0}.setting{display:flex;justify-content:space-between;align-items:center;gap:15px;padding:16px 0;border-bottom:1px solid var(--border)}.toggle{appearance:none;width:46px;height:26px;border-radius:20px;background:#333;position:relative}.toggle:checked{background:var(--accent)}.toggle:after{content:"";position:absolute;width:20px;height:20px;top:3px;left:3px;background:#fff;border-radius:50%;transition:.2s}.toggle:checked:after{left:23px}.toast{position:fixed;right:20px;bottom:100px;background:#fff;color:#111;padding:12px 16px;border-radius:12px;display:none;z-index:50}.toast.show{display:block}
-@media(max-width:800px){.sidebar{top:auto;bottom:0;width:100%;height:70px;padding:7px;border-right:0;border-top:1px solid var(--border);display:flex;align-items:center;background:rgba(10,10,15,.96)}.logo{display:none}.nav{display:grid;grid-template-columns:repeat(5,1fr);width:100%;gap:3px}.nav button{padding:9px 4px;text-align:center;font-size:11px}.main{margin-left:0;width:100%;padding:20px 16px 155px}.top{margin-bottom:20px;align-items:stretch;flex-direction:column}.stats{grid-template-columns:1fr 1fr}.stat:last-child{grid-column:1/-1}.player{left:0;bottom:70px;padding:10px 12px}.hero{padding:22px}.hero h1{font-size:27px}.grid{grid-template-columns:1fr}.ai{height:calc(100vh - 185px);min-height:450px}.msg{max-width:90%}}
+:root{--bg:#08080d;--panel:#111119;--panel2:#191923;--text:#fff;--muted:#9898aa;--accent:#9b7cff;--border:rgba(255,255,255,.08);--good:#65e6a7}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 15% 0,#21183d 0,#08080d 38%);color:var(--text);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100vh}button,input,textarea,select{font:inherit}button{cursor:pointer;border:0}.app{min-height:100vh;display:flex}.side{position:fixed;left:0;top:0;bottom:0;width:245px;padding:24px 15px;border-right:1px solid var(--border);background:rgba(8,8,13,.88);backdrop-filter:blur(18px);z-index:20}.logo{font-weight:850;font-size:21px;margin:5px 10px 28px}.logo span{color:var(--accent)}.version{display:block;font-size:10px;color:#777;margin-top:4px}.nav{display:grid;gap:7px}.nav button{padding:13px 14px;border-radius:13px;text-align:left;background:transparent;color:var(--muted)}.nav button.active,.nav button:hover{background:var(--panel2);color:#fff}.main{margin-left:245px;width:calc(100% - 245px);padding:26px 32px 125px}.top{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:25px}.search{width:min(440px,100%);background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:12px 15px;color:#fff;outline:0}.btn{background:var(--accent);color:#fff;padding:12px 16px;border-radius:12px;font-weight:750}.btn.secondary{background:var(--panel2);border:1px solid var(--border)}.page{display:none;animation:fade .2s ease}.page.active{display:block}@keyframes fade{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}h1{font-size:34px;margin:0 0 7px}h2{font-size:21px;margin:0 0 15px}.muted{color:var(--muted)}.hero{padding:27px;border:1px solid var(--border);border-radius:24px;background:linear-gradient(135deg,rgba(155,124,255,.23),rgba(255,255,255,.035));margin-bottom:18px}.hero h1{font-size:31px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin:15px 0 23px}.card,.stat{background:rgba(17,17,25,.9);border:1px solid var(--border);border-radius:18px;padding:17px}.stat b{display:block;font-size:28px;margin-top:4px}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px}.cover{width:58px;height:58px;border-radius:13px;background:linear-gradient(135deg,var(--accent),#2b2144);display:grid;place-items:center;font-size:24px;flex:none}.track{display:flex;gap:12px;align-items:center}.info{min-width:0;flex:1}.title{font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.artist{font-size:13px;color:var(--muted);margin-top:3px}.actions{display:flex;gap:7px;margin-top:13px}.icon{width:38px;height:38px;border-radius:11px;background:var(--panel2);border:1px solid var(--border);color:#fff}.empty{padding:45px 20px;border:1px dashed var(--border);border-radius:18px;text-align:center;color:var(--muted)}.project-head{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;margin-bottom:18px}.project-list{display:grid;gap:10px}.project{display:flex;align-items:center;gap:14px;padding:15px;background:var(--panel);border:1px solid var(--border);border-radius:16px}.project .info{flex:1}.badge{font-size:11px;border:1px solid var(--border);padding:5px 8px;border-radius:8px;color:var(--accent2)}.editor{display:grid;grid-template-columns:1fr 320px;gap:15px}.lyrics{width:100%;min-height:500px;background:#0b0b11;border:1px solid var(--border);border-radius:18px;padding:20px;color:#fff;outline:0;resize:vertical;line-height:1.7}.panel{background:var(--panel);border:1px solid var(--border);border-radius:18px;padding:18px}.field{margin-bottom:13px}.field label{display:block;color:var(--muted);font-size:12px;margin-bottom:6px}.field input,.field select,.field textarea{width:100%;background:#0a0a0f;border:1px solid var(--border);border-radius:11px;padding:11px;color:#fff;outline:0}.field textarea{min-height:90px;resize:vertical}.ai-layout{display:grid;grid-template-rows:1fr auto;height:calc(100vh - 170px);min-height:500px}.chat{overflow:auto;background:rgba(17,17,25,.7);border:1px solid var(--border);border-radius:20px;padding:17px}.msg{max-width:80%;padding:12px 14px;border-radius:15px;line-height:1.5;margin:9px 0}.msg.ai{background:var(--panel2);margin-right:auto}.msg.user{background:var(--accent);margin-left:auto}.chatform{display:flex;gap:9px;margin-top:11px}.chatform input{flex:1;background:var(--panel);border:1px solid var(--border);border-radius:13px;color:#fff;padding:13px;outline:0}.wave{height:110px;border:1px solid var(--border);border-radius:18px;background:#0b0b11;display:flex;align-items:center;justify-content:center;gap:4px;margin-bottom:14px;overflow:hidden}.wave i{width:4px;border-radius:5px;background:var(--accent);opacity:.7}.controls{display:flex;justify-content:center;gap:9px}.progress{height:5px;background:#292832;border-radius:5px;margin:14px 0 5px;overflow:hidden}.progress i{display:block;height:100%;width:0;background:var(--accent)}.time{display:flex;justify-content:space-between;color:var(--muted);font-size:11px}.player{position:fixed;left:245px;right:0;bottom:0;background:rgba(14,14,21,.95);backdrop-filter:blur(18px);border-top:1px solid var(--border);z-index:18;padding:11px 20px}.playerin{display:flex;align-items:center;gap:13px}.pinfo{flex:1;min-width:0}.toast{position:fixed;right:20px;bottom:100px;background:#fff;color:#111;padding:12px 16px;border-radius:12px;display:none;z-index:50}.toast.show{display:block}.modal{position:fixed;inset:0;background:rgba(0,0,0,.72);backdrop-filter:blur(8px);display:none;place-items:center;padding:18px;z-index:40}.modal.show{display:grid}.modalbox{width:min(560px,100%);background:#111119;border:1px solid var(--border);border-radius:22px;padding:22px}.row{display:flex;gap:9px;justify-content:flex-end;margin-top:10px}
+@media(max-width:850px){.side{top:auto;bottom:0;width:100%;height:69px;padding:7px;border:0;border-top:1px solid var(--border)}.logo{display:none}.nav{grid-template-columns:repeat(5,1fr);gap:3px}.nav button{text-align:center;padding:9px 2px;font-size:10px}.main{margin:0;width:100%;padding:19px 15px 153px}.top{flex-direction:column;align-items:stretch}.stats{grid-template-columns:1fr 1fr}.stat:last-child{grid-column:1/-1}.player{left:0;bottom:69px}.editor{grid-template-columns:1fr}.lyrics{min-height:390px}.project-head{flex-direction:column}.ai-layout{height:calc(100vh - 190px)}}
 </style>
 </head>
 <body>
 <div class="app">
-<aside class="sidebar">
-  <div class="logo">☕ CAFFI <span>STUDIO</span><small style="display:block;color:#777;font-size:10px;margin-top:4px">v0.3.0</small></div>
-  <nav class="nav">
-    <button class="active" data-page="home">🏠 Home</button>
-    <button data-page="library">🎵 Library</button>
-    <button data-page="favorites">⭐ Favorites</button>
-    <button data-page="ai">✨ Caffi AI</button>
-    <button data-page="settings">⚙️ Settings</button>
-  </nav>
-</aside>
+<aside class="side"><div class="logo">☕ CAFFI <span>STUDIO</span><small class="version">v0.4.0 • AI 2.0 Preview</small></div>
+<nav class="nav">
+<button class="active" data-page="home">🏠 Home</button>
+<button data-page="projects">📁 Projects</button>
+<button data-page="editor">📝 Lyrics</button>
+<button data-page="ai">✨ Caffi AI</button>
+<button data-page="settings">⚙️ Settings</button>
+</nav></aside>
 
 <main class="main">
-<header class="top">
-  <input id="search" class="search" placeholder="🔍 Search music..." />
-  <button class="pill" onclick="openAdd()">＋ Add Track</button>
-</header>
+<header class="top"><input id="search" class="search" placeholder="🔍 Search projects..."><button class="btn" onclick="openProject()">＋ New Project</button></header>
 
 <section id="home" class="page active">
-  <div class="hero">
-    <div class="muted">CAFFI STUDIO 0.3</div>
-    <h1>Good afternoon, Caffi 👋</h1>
-    <p class="muted">Create. Play. Organize. Wszystko w jednym miejscu.</p>
-    <button class="btn" onclick="openAdd()">＋ Add your first track</button>
-  </div>
-  <div class="stats">
-    <div class="stat"><span class="muted">🎵 Tracks</span><b id="statTracks">0</b></div>
-    <div class="stat"><span class="muted">⭐ Favorites</span><b id="statFav">0</b></div>
-    <div class="stat"><span class="muted">🕘 Recently Played</span><b id="statRecent">0</b></div>
-  </div>
-  <h2>Recently played</h2>
-  <div id="recent" class="grid"></div>
+<div class="hero"><div class="muted">CAFFI STUDIO 0.4</div><h1>Build your next track. 🎧</h1><p class="muted">Projekty, teksty i Caffi AI w jednym miejscu.</p><button class="btn" onclick="openProject()">＋ Create Project</button></div>
+<div class="stats"><div class="stat"><span class="muted">📁 Projects</span><b id="countProjects">0</b></div><div class="stat"><span class="muted">📝 Words</span><b id="countWords">0</b></div><div class="stat"><span class="muted">✨ AI Sessions</span><b id="countAI">0</b></div></div>
+<h2>Recent projects</h2><div id="recentProjects" class="grid"></div>
 </section>
 
-<section id="library" class="page">
-  <h1>Library</h1><p class="muted">Twoja biblioteka muzyczna.</p>
-  <div style="height:18px"></div>
-  <div id="libraryList" class="grid"></div>
+<section id="projects" class="page">
+<div class="project-head"><div><h1>Projects</h1><p class="muted">Twoje muzyczne projekty.</p></div><button class="btn" onclick="openProject()">＋ New Project</button></div>
+<div id="projectList" class="project-list"></div>
 </section>
 
-<section id="favorites" class="page">
-  <h1>Favorites ⭐</h1><p class="muted">Utwory, które oznaczyłeś jako ulubione.</p>
-  <div style="height:18px"></div>
-  <div id="favList" class="grid"></div>
+<section id="editor" class="page">
+<div class="project-head"><div><h1>📝 Lyrics Editor</h1><p id="editorSubtitle" class="muted">Wybierz projekt, aby rozpocząć.</p></div><button class="btn" onclick="saveEditor()">💾 Save</button></div>
+<div class="editor"><textarea id="lyrics" class="lyrics" placeholder="[Intro]\n\n[Verse 1]\n\n[Chorus]\n\n[Verse 2]\n\n[Outro]"></textarea>
+<div class="panel">
+<div class="field"><label>Project</label><select id="projectSelect" onchange="loadProject(this.value)"></select></div>
+<div class="field"><label>BPM</label><input id="bpm" type="number" value="120"></div>
+<div class="field"><label>Key</label><input id="key" placeholder="Am"></div>
+<div class="field"><label>Genre</label><select id="genre"><option>Pop</option><option>Rap</option><option>Trap</option><option>R&B</option><option>Rock</option><option>Lo-fi</option><option>Other</option></select></div>
+<div class="field"><label>Notes</label><textarea id="notes" placeholder="Pomysły, klimat, instrumenty..."></textarea></div>
+<p class="muted" style="font-size:12px">Words: <b id="wordCount">0</b></p>
+<button class="btn" style="width:100%" onclick="askAIFromEditor()">✨ Ask Caffi AI</button>
+</div></div>
 </section>
 
 <section id="ai" class="page">
-  <h1>✨ Caffi AI</h1><p class="muted">AI Preview — kreatywny asystent Caffi Studio.</p>
-  <div style="height:15px"></div>
-  <div class="ai">
-    <div id="chat" class="chat"><div class="msg ai">Hej! Jestem <b>Caffi AI</b> ✨<br>W tej wersji mogę pomóc Ci wymyślać tytuły, teksty, koncepty i pomysły na utwory.</div></div>
-    <form id="chatForm" class="chat-form"><input id="chatInput" placeholder="Napisz do Caffi AI..." autocomplete="off"><button class="btn">Wyślij</button></form>
-  </div>
+<h1>✨ Caffi AI 2.0</h1><p class="muted">Kreatywny asystent Caffi Studio. Wersja Preview.</p><div style="height:14px"></div>
+<div class="ai-layout"><div id="chat" class="chat"><div class="msg ai">Hej! Jestem <b>Caffi AI 2.0</b> ✨<br>Pomogę Ci z tekstem, refrenem, tytułem, konceptem i strukturą utworu.</div></div>
+<form id="chatform" class="chatform"><input id="chatinput" placeholder="Np. wymyśl mi refren do mrocznego rapu..."><button class="btn">Wyślij</button></form></div>
 </section>
 
 <section id="settings" class="page">
-  <h1>Settings</h1><p class="muted">Ustawienia Caffi Studio.</p>
-  <div class="card" style="margin-top:18px">
-    <div class="setting"><div><b>Autoplay</b><div class="muted">Automatyczne odtwarzanie kolejnego utworu</div></div><input id="autoplay" class="toggle" type="checkbox"></div>
-    <div class="setting"><div><b>Remember song</b><div class="muted">Zapamiętaj ostatnio odtwarzany utwór</div></div><input id="remember" class="toggle" type="checkbox" checked></div>
-    <div class="setting"><div><b>Library data</b><div class="muted">Dane są zapisywane lokalnie w tej przeglądarce.</div></div><button class="icon" onclick="clearLibrary()">🗑️</button></div>
-    <div class="setting"><div><b>Version</b><div class="muted">Caffi Studio 0.3.0 • AI Preview</div></div><span>☕</span></div>
-  </div>
-</section>
-</main>
-</div>
+<h1>Settings</h1><p class="muted">Ustawienia aplikacji.</p><div class="panel" style="margin-top:18px">
+<div class="field"><label>Theme</label><select><option>Dark</option><option>Light (Preview)</option></select></div>
+<div class="field"><label>AI mode</label><select><option>AI Preview — local</option><option>API — coming soon</option></select></div>
+<div class="row"><button class="btn secondary" onclick="resetData()">Reset all data</button></div>
+<p class="muted" style="font-size:12px;margin-top:20px">Caffi Studio 0.4.0 • Projects + Lyrics + AI 2.0</p>
+</div></section>
+</main></div>
 
-<div id="player" class="player" style="display:none">
- <div class="player-inner">
-  <div id="pCover" class="cover">🎵</div>
-  <div class="player-info"><div id="pTitle" class="track-title">—</div><div id="pArtist" class="track-artist">—</div><div class="progress"><i id="progressBar"></i></div><div class="time"><span id="currentTime">0:00</span><span id="duration">0:00</span></div></div>
-  <button class="icon" onclick="prevTrack()">⏮</button><button id="playBtn" class="icon" onclick="togglePlay()">▶</button><button class="icon" onclick="nextTrack()">⏭</button>
- </div>
-</div>
+<div id="player" class="player" style="display:none"><div class="playerin"><div class="cover">🎵</div><div class="pinfo"><div id="ptitle" class="title">—</div><div id="partist" class="artist">Caffi Studio</div><div class="progress"><i id="pbar"></i></div><div class="time"><span id="ptime">0:00</span><span>03:30</span></div></div><button class="icon" onclick="togglePlayer()">▶</button></div></div>
 
-<div id="modal" class="modal">
- <div class="modal-box">
-  <h2>Add Track</h2>
-  <form id="trackForm" class="form">
-   <div><label>Track name</label><input id="trackName" required placeholder="My New Song"></div>
-   <div><label>Artist</label><input id="trackArtist" placeholder="Caffi"></div>
-   <div><label>Duration (seconds)</label><input id="trackDuration" type="number" min="1" value="210"></div>
-   <div class="row"><button type="button" class="btn secondary" onclick="closeAdd()">Cancel</button><button class="btn">Add Track</button></div>
-  </form>
- </div>
-</div>
-<div id="toast" class="toast"></div>
+<div id="projectModal" class="modal"><div class="modalbox"><h2>New Project</h2><form id="projectForm">
+<div class="field"><label>Project name</label><input id="projectName" required placeholder="Midnight"></div>
+<div class="field"><label>Artist</label><input id="projectArtist" placeholder="Caffi"></div>
+<div class="field"><label>Genre</label><select id="projectGenre"><option>Pop</option><option>Rap</option><option>Trap</option><option>R&B</option><option>Rock</option><option>Lo-fi</option></select></div>
+<div class="field"><label>BPM</label><input id="projectBpm" type="number" value="120"></div>
+<div class="row"><button type="button" class="btn secondary" onclick="closeProject()">Cancel</button><button class="btn">Create</button></div>
+</form></div></div><div id="toast" class="toast"></div>
 
 <script>
-const KEY="caffiStudio03";
-let data=JSON.parse(localStorage.getItem(KEY)||"null")||{tracks:[],recent:[],favorites:[],settings:{autoplay:false,remember:true}};
-let current=null, playing=false, timer=null, elapsed=0;
-
-function save(){localStorage.setItem(KEY,JSON.stringify(data));render();}
-function esc(s){return String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[m]));}
-function fmt(s){s=Math.max(0,Math.floor(s));return Math.floor(s/60)+":"+String(s%60).padStart(2,"0");}
-function toast(t){let x=document.getElementById("toast");x.textContent=t;x.classList.add("show");setTimeout(()=>x.classList.remove("show"),1800);}
-function trackCard(t){
- const fav=data.favorites.includes(t.id);
- return `<div class="card"><div class="track"><div class="cover">🎵</div><div class="track-info"><div class="track-title">${esc(t.name)}</div><div class="track-artist">${esc(t.artist||"Unknown")} • ${fmt(t.duration)}</div></div></div><div style="height:13px"></div><div class="actions"><button class="icon" onclick="playTrack('${t.id}')">▶</button><button class="icon" onclick="favorite('${t.id}')">${fav?"★":"☆"}</button><button class="icon" onclick="removeTrack('${t.id}')">🗑</button></div></div>`;
-}
-function render(){
- let q=document.getElementById("search").value.toLowerCase().trim();
- let filtered=data.tracks.filter(t=>(t.name+" "+t.artist).toLowerCase().includes(q));
- document.getElementById("libraryList").innerHTML=filtered.length?filtered.map(trackCard).join():`<div class="empty">Brak utworów.<br><br><button class="btn" onclick="openAdd()">＋ Add Track</button></div>`;
- let fav=data.tracks.filter(t=>data.favorites.includes(t.id)&&(!q||(t.name+" "+t.artist).toLowerCase().includes(q)));
- document.getElementById("favList").innerHTML=fav.length?fav.map(trackCard).join():`<div class="empty">Nie masz jeszcze ulubionych utworów ⭐</div>`;
- let rec=data.recent.map(id=>data.tracks.find(t=>t.id===id)).filter(Boolean).filter(t=>!q||(t.name+" "+t.artist).toLowerCase().includes(q));
- document.getElementById("recent").innerHTML=rec.length?rec.slice(0,6).map(trackCard).join():`<div class="empty">Historia odtwarzania jest pusta.</div>`;
- document.getElementById("statTracks").textContent=data.tracks.length;
- document.getElementById("statFav").textContent=data.favorites.length;
- document.getElementById("statRecent").textContent=data.recent.length;
- document.getElementById("autoplay").checked=data.settings.autoplay;
- document.getElementById("remember").checked=data.settings.remember;
-}
-function nav(page){
- document.querySelectorAll(".nav button").forEach(b=>b.classList.toggle("active",b.dataset.page===page));
- document.querySelectorAll(".page").forEach(p=>p.classList.toggle("active",p.id===page));
- document.getElementById("search").value="";
- render();
-}
+const KEY="caffiStudio04";
+let db=JSON.parse(localStorage.getItem(KEY)||"null")||{projects:[],aiSessions:0,settings:{}},currentProject=null,playing=false,elapsed=0,timer=null;
+const id=()=>crypto.randomUUID?crypto.randomUUID():Date.now().toString();
+const save=()=>{localStorage.setItem(KEY,JSON.stringify(db));render();};
+const esc=s=>String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[m]));
+const words=s=>(s.trim().match(/\S+/g)||[]).length;
+function toast(t){const x=document.getElementById("toast");x.textContent=t;x.classList.add("show");setTimeout(()=>x.classList.remove("show"),1700)}
+function nav(p){document.querySelectorAll(".nav button").forEach(b=>b.classList.toggle("active",b.dataset.page===p));document.querySelectorAll(".page").forEach(x=>x.classList.toggle("active",x.id===p));if(p==="editor")populateSelect();document.getElementById("search").value="";render()}
 document.querySelectorAll(".nav button").forEach(b=>b.onclick=()=>nav(b.dataset.page));
 document.getElementById("search").oninput=render;
-
-function openAdd(){document.getElementById("modal").classList.add("show");document.getElementById("trackName").focus();}
-function closeAdd(){document.getElementById("modal").classList.remove("show");}
-document.getElementById("trackForm").onsubmit=e=>{e.preventDefault();let t={id:crypto.randomUUID?crypto.randomUUID():Date.now().toString(),name:document.getElementById("trackName").value.trim(),artist:document.getElementById("trackArtist").value.trim()||"Unknown",duration:+document.getElementById("trackDuration").value||210};data.tracks.unshift(t);save();closeAdd();e.target.reset();toast("Dodano utwór 🎵");};
-function favorite(id){data.favorites=data.favorites.includes(id)?data.favorites.filter(x=>x!==id):[...data.favorites,id];save();toast("Zaktualizowano ulubione ⭐");}
-function removeTrack(id){if(!confirm("Usunąć ten utwór?"))return;data.tracks=data.tracks.filter(t=>t.id!==id);data.favorites=data.favorites.filter(x=>x!==id);data.recent=data.recent.filter(x=>x!==id);if(current===id)stop();save();}
-function clearLibrary(){if(confirm("Usunąć całą bibliotekę i historię?")){data.tracks=[];data.favorites=[];data.recent=[];stop();save();toast("Biblioteka wyczyszczona");}}
-function playTrack(id){let t=data.tracks.find(x=>x.id===id);if(!t)return;current=id;elapsed=0;playing=true;data.recent=[id,...data.recent.filter(x=>x!==id)].slice(0,20);save();updatePlayer();clearInterval(timer);timer=setInterval(tick,1000);}
-function updatePlayer(){let t=data.tracks.find(x=>x.id===current);if(!t){document.getElementById("player").style.display="none";return}document.getElementById("player").style.display="block";document.getElementById("pTitle").textContent=t.name;document.getElementById("pArtist").textContent=t.artist;document.getElementById("duration").textContent=fmt(t.duration);document.getElementById("currentTime").textContent=fmt(elapsed);document.getElementById("progressBar").style.width=Math.min(100,elapsed/t.duration*100)+"%";document.getElementById("playBtn").textContent=playing?"⏸":"▶";}
-function tick(){let t=data.tracks.find(x=>x.id===current);if(!t)return;if(elapsed>=t.duration){if(data.settings.autoplay){nextTrack();}else{playing=false;clearInterval(timer);updatePlayer()}return}elapsed++;updatePlayer();}
-function togglePlay(){if(!current&&data.tracks[0])return playTrack(data.tracks[0].id);playing=!playing;if(playing)timer=setInterval(tick,1000);else clearInterval(timer);updatePlayer();}
-function stop(){playing=false;current=null;elapsed=0;clearInterval(timer);document.getElementById("player").style.display="none";}
-function nextTrack(){if(!data.tracks.length)return;let i=data.tracks.findIndex(t=>t.id===current);playTrack(data.tracks[(i+1)%data.tracks.length].id);}
-function prevTrack(){if(!data.tracks.length)return;let i=data.tracks.findIndex(t=>t.id===current);playTrack(data.tracks[(i-1+data.tracks.length)%data.tracks.length].id);}
-document.getElementById("autoplay").onchange=e=>{data.settings.autoplay=e.target.checked;save()};
-document.getElementById("remember").onchange=e=>{data.settings.remember=e.target.checked;save()};
-
-document.getElementById("chatForm").onsubmit=e=>{e.preventDefault();let input=document.getElementById("chatInput"),text=input.value.trim();if(!text)return;let chat=document.getElementById("chat");chat.insertAdjacentHTML("beforeend",`<div class="msg user">${esc(text)}</div>`);input.value="";setTimeout(()=>{let answer=aiReply(text);chat.insertAdjacentHTML("beforeend",`<div class="msg ai">${answer}</div>`);chat.scrollTop=chat.scrollHeight},350);chat.scrollTop=chat.scrollHeight;};
-function aiReply(q){let l=q.toLowerCase();if(l.includes("tytuł")||l.includes("nazwa"))return"Jasne ✨ Spróbuj: <b>Neon Dreams</b>, <b>After Midnight</b>, <b>Lost Frequency</b> albo <b>Without You</b>.";if(l.includes("refren")||l.includes("tekst"))return"Pomysł na refren: <i>„Zostań jeszcze chwilę, zanim zgaśnie noc / mamy tylko moment, więc wykorzystaj go”</i>.<br><span class='muted'>AI Preview — prawdziwy model API podłączymy w kolejnej wersji.</span>";if(l.includes("rap"))return"Możemy zrobić mroczny, melodyjny rap: nocne miasto, ambicja, relacje i droga od zera. 🎤";return"Rozumiem ✨ W wersji 0.3 jestem jeszcze <b>AI Preview</b> działającym lokalnie. Mogę generować podstawowe pomysły na teksty, tytuły i koncepty. W kolejnej wersji możemy podłączyć prawdziwy model AI."; }
+function projectCard(p){return `<div class="project"><div class="cover">🎵</div><div class="info"><div class="title">${esc(p.name)}</div><div class="artist">${esc(p.artist||"Caffi")} • ${esc(p.genre)} • ${p.bpm} BPM</div></div><span class="badge">${words(p.lyrics)} words</span><button class="icon" onclick="editProject('${p.id}')">📝</button><button class="icon" onclick="deleteProject('${p.id}')">🗑</button></div>`}
+function render(){let q=document.getElementById("search").value.toLowerCase().trim();let ps=db.projects.filter(p=>(p.name+" "+p.artist+" "+p.genre).toLowerCase().includes(q));document.getElementById("projectList").innerHTML=ps.length?ps.map(projectCard).join():`<div class="empty">Brak projektów.<br><br><button class="btn" onclick="openProject()">＋ New Project</button></div>`;document.getElementById("recentProjects").innerHTML=ps.slice(0,5).map(projectCard).join()||`<div class="empty">Stwórz pierwszy projekt.</div>`;document.getElementById("countProjects").textContent=db.projects.length;document.getElementById("countWords").textContent=db.projects.reduce((a,p)=>a+words(p.lyrics),0);document.getElementById("countAI").textContent=db.aiSessions}
+function openProject(){document.getElementById("projectModal").classList.add("show");document.getElementById("projectName").focus()}
+function closeProject(){document.getElementById("projectModal").classList.remove("show")}
+document.getElementById("projectForm").onsubmit=e=>{e.preventDefault();let p={id:id(),name:document.getElementById("projectName").value.trim(),artist:document.getElementById("projectArtist").value.trim()||"Caffi",genre:document.getElementById("projectGenre").value,bpm:+document.getElementById("projectBpm").value||120,key:"Am",notes:"",lyrics:""};db.projects.unshift(p);currentProject=p.id;save();closeProject();e.target.reset();toast("Projekt utworzony 🎵");nav("editor");}
+function populateSelect(){let s=document.getElementById("projectSelect");s.innerHTML=db.projects.map(p=>`<option value="${p.id}">${esc(p.name)}</option>`).join()||`<option value="">Brak projektów</option>`;if(currentProject&&db.projects.some(p=>p.id===currentProject))s.value=currentProject;if(s.value)loadProject(s.value)}
+function loadProject(pid){currentProject=pid;let p=db.projects.find(x=>x.id===pid);if(!p)return;document.getElementById("lyrics").value=p.lyrics||"";document.getElementById("bpm").value=p.bpm||120;document.getElementById("key").value=p.key||"Am";document.getElementById("genre").value=p.genre||"Pop";document.getElementById("notes").value=p.notes||"";document.getElementById("editorSubtitle").textContent=p.name+" • "+p.artist;updateWords()}
+document.getElementById("lyrics").oninput=updateWords;
+function updateWords(){document.getElementById("wordCount").textContent=words(document.getElementById("lyrics").value)}
+function saveEditor(){let p=db.projects.find(x=>x.id===currentProject);if(!p)return toast("Najpierw utwórz projekt");p.lyrics=document.getElementById("lyrics").value;p.bpm=+document.getElementById("bpm").value||120;p.key=document.getElementById("key").value;p.genre=document.getElementById("genre").value;p.notes=document.getElementById("notes").value;save();toast("Zapisano projekt 💾")}
+function editProject(pid){currentProject=pid;nav("editor")}
+function deleteProject(pid){if(!confirm("Usunąć projekt?"))return;db.projects=db.projects.filter(p=>p.id!==pid);if(currentProject===pid)currentProject=null;save();toast("Projekt usunięty")}
+function resetData(){if(confirm("Usunąć wszystkie projekty i historię AI?")){db={projects:[],aiSessions:0,settings:{}};localStorage.setItem(KEY,JSON.stringify(db));currentProject=null;render();toast("Dane wyczyszczone")}}
+function aiReply(q){let l=q.toLowerCase();db.aiSessions++;if(l.includes("refren"))return"Jasne ✨<br><b>Refren:</b><br><i>Nie gaśnie światło, kiedy tracę grunt,<br>idę przez noc, choć nie wiem dokąd już.<br>W kieszeni mam marzenia zamiast map,<br>a jeśli spadnę — podniosę się jeszcze raz.</i>";if(l.includes("tytuł")||l.includes("nazwa"))return"Propozycje tytułów: <b>Neon Heart</b>, <b>After Midnight</b>, <b>Lost Signal</b>, <b>Bez Mapy</b>, <b>Ostatni Raz</b>.";if(l.includes("rap"))return"Koncept: mroczny rap o ambicji, nocnym mieście i relacjach. Zwrotka — storytelling, refren — prosty i melodyjny, bridge — krótki i emocjonalny.";return"Spróbuj poprosić mnie o <b>refren</b>, <b>zwrotkę</b>, <b>tytuły</b>, strukturę utworu albo pomysł na konkretny gatunek. ✨<br><span class='muted'>AI 2.0 Preview — prawdziwe API możemy podłączyć w następnej fazie.</span>"}
+document.getElementById("chatform").onsubmit=e=>{e.preventDefault();let i=document.getElementById("chatinput"),q=i.value.trim();if(!q)return;let c=document.getElementById("chat");c.insertAdjacentHTML("beforeend",`<div class="msg user">${esc(q)}</div>`);i.value="";setTimeout(()=>{c.insertAdjacentHTML("beforeend",`<div class="msg ai">${aiReply(q)}</div>`);save();c.scrollTop=c.scrollHeight},300);c.scrollTop=c.scrollHeight}
+function askAIFromEditor(){let txt=document.getElementById("lyrics").value;nav("ai");document.getElementById("chatinput").value=txt?"Popraw ten tekst i zaproponuj mocniejszy refren: "+txt:"Wymyśl koncept i refren do mojego projektu.";document.getElementById("chatform").requestSubmit()}
+function togglePlayer(){playing=!playing;clearInterval(timer);if(playing)timer=setInterval(()=>{elapsed++;if(elapsed>=210){elapsed=0}document.getElementById("pbar").style.width=elapsed/210*100+"%";document.getElementById("ptime").textContent=Math.floor(elapsed/60)+":"+String(elapsed%60).padStart(2,"0")},1000)}
 render();
 </script>
 </body>
